@@ -1,0 +1,6 @@
+/.idea
+/back/vendor
+/back/.env
+
+/front/node_modules
+/front/.env

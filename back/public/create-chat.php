@@ -1,5 +1,10 @@
 <?php
+use Dotenv\Dotenv;
+
 require_once __DIR__ . '/../vendor/autoload.php';
+
+$dotenv = Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv->load();
 
 use App\src\controllers\ChatController;
 use Ratchet\Server\IoServer;
@@ -12,7 +17,7 @@ $server = IoServer::factory(
             new ChatController()
         )
     ),
-    8080
+    intval(getenv('WEBSOCKET_PORT'))
 );
 
 $server->run();

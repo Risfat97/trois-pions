@@ -162,6 +162,16 @@ div.action-container {
   cursor: pointer;
 }
 
+.btn-outline {
+  background: transparent;
+  color: var(--col-blue-dark);
+  border: 1px solid var(--col-blue-dark);
+}
+.btn-outline:hover {
+  background: var(--col-blue-dark);
+  color: var(--col-secondary);
+}
+
 .btn-icon-sound {
   padding: .3rem .7rem;
   border: none;
@@ -205,6 +215,10 @@ p.message {
 
 p.message.success {
   color: var(--col-yellow);
+}
+
+.text-success {
+  color: var(--col-green);
 }
 
 .separator {
@@ -316,6 +330,14 @@ p.message.success {
 .btn-danger {
   background-color: var(--col-danger);
   color: var(--col-secondary);
+}
+
+.mt-3 {
+  margin-top: 16px;
+}
+
+.mb-3 {
+  margin-bottom: 16px;
 }
 
 @keyframes clign {

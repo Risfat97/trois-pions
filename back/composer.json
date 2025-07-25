@@ -1,18 +1,19 @@
 {
-    "name": "sirtaf/api-trois-pions",
-    "description": "WebSocket pour le jeu de trois pions",
-    "autoload": {
-        "psr-4": {
-            "App\\": ""
-        }
-    },
-    "authors": [
-        {
-            "name": "Tafsir Ndiour",
-            "email": "tamsir97@gmail.com"
-        }
-    ],
-    "require": {
-        "cboden/ratchet": "^0.4.4"
+  "description": "WebSocket pour le jeu de trois pions",
+  "autoload": {
+    "psr-4": {
+      "App\\": ""
     }
+  },
+  "authors": [
+    {
+      "name": "Tafsir Ndiour",
+      "email": "t.ndiour@ext.monaco-telecom.mc"
+    }
+  ],
+  "require": {
+    "cboden/ratchet": "^0.4.4",
+    "vlucas/phpdotenv": "^5.5",
+    "ext-pdo": "*"
+  }
 }
