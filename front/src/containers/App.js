@@ -211,7 +211,7 @@ function App() {
           setPieces(newPieces);
         }, 1000)
       } else if (mode === 'friend') {
-          const conn = new WebSocket('ws://localhost:8080');
+          const conn = new WebSocket(process.env.REACT_APP_WS_URL);
           setSocket(conn);
           conn.onopen = (e) => {
             conn.send(JSON.stringify({ action: 'hello', pieces: [] }));
@@ -515,6 +515,8 @@ function App() {
         onDragOver={handleDragOverWrapper}
         onDragStart={handleDragStartWrapper}
         onDrop={handleDropWrapper} />
+
+      <p className={`message ${status === 'overgame' ? 'd-none' : ''}`}>{players[currentPlayer].name.toUpperCase()} à vous de jouer!</p>
       <p className={`message ${status === 'overgame' ? 'success' : ''}`}>{messages[status]} {status !== 'overgame' ? '' : `Le vainqueur est ${players[winner].name.toUpperCase()}.`}</p>
       <div className="action-container">
         <button className={`btn ${status !== 'overgame' ? 'd-none' : ''}`} onClick={() => newGame()}>Rejouer</button>

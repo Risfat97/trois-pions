@@ -1,0 +1,48 @@
+services:
+  backend:
+    container_name: backend_c
+    image: backend
+    build:
+      context: back
+      dockerfile: Dockerfile
+    env_file:
+      - back/.env
+    volumes:
+      - ./back:/var/www/trois-pions-back
+    ports:
+      - "8080:8080"   # Apache
+      - "8081:8081"   # WebSocket
+
+  frontend:
+    container_name: frontend_c
+    image: frontend
+    build:
+      context: front
+      dockerfile: Dockerfile
+    env_file:
+      - front/.env
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./front:/app
+    depends_on:
+      - backend
+
+  db:
+    image: mysql
+    container_name: db_c
+    platform: linux/amd64
+    ports:
+      - "3306:3306"
+    env_file:
+      - back/.env
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=${DB_DATABASE:-trois_pions_db}
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD:-root}
+      - MYSQL_HOST=${DB_HOST:-localhost}
+
+## Names our volume
+volumes:
+  db_data:

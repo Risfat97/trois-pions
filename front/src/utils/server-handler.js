@@ -1,5 +1,5 @@
 const sendLog = async () => {
-    const response = await fetch('http://localhost:4500/public/create-visitor.php');
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/create-visitor.php`);
     if(response.status === 200) {
         const responseBody = await response.json();
         return responseBody;
@@ -9,7 +9,7 @@ const sendLog = async () => {
 }
 
 const getLink = async () => {
-    const response = await fetch('http://localhost:4500/public/create-link.php');
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/create-link.php`);
     if(response.status === 200) {
         const responseBody = await response.json();
         return window.location.href + '?game=' + responseBody.data.link;
@@ -19,7 +19,7 @@ const getLink = async () => {
 }
 
 const join = async (link) => {
-    const response = await fetch('http://localhost:4500/public/join-link.php?link='+link);
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/join-link.php?link=${link}`);
     if(response.status === 200) {
         const responseBody = await response.json();
         return responseBody;

@@ -1,14 +1,18 @@
 <?php
 session_start();
 use App\src\services\DatabaseService;
+use Dotenv\Dotenv;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 date_default_timezone_set('Europe/Paris');
 setlocale(LC_TIME, "fr_FR");
 
-header("Access-Control-Allow-Origin: *");
 header('Access-Control-Allow-Methods: GET, POST');
 header('Content-Type: application/json');
+
+$dotenv = Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv->load();
+
 /*
 $debug = 1;
 
@@ -30,5 +34,6 @@ if (!isset($_SESSION)) {
     @session_start();
 }
 */
+
 $dbInstance = DatabaseService::getInstance();
 ?>
